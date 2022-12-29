@@ -48,6 +48,6 @@ public:
         printf("[Number of Stack elements : %d]\n", top + 1);
         for (int i = 0; i <= top; i++)
             printf("<%2d>", data[i]);
-        printf("\n\n");
+        printf("\nn");
     }
 };
