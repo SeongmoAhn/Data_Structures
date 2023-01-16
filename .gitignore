@@ -1,2 +1,10 @@
 *.exe
 *.out
+test.c
+test.cpp
+a.cpp
+b.cpp
+c.cpp
+a.h
+b.h
+c.h
