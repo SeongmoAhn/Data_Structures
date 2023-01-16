@@ -10,12 +10,15 @@ class Student {
 
 public:
     Student(int i = 0, const char* n = "", const char* d = "") { set(i, n, d); }
-    void set(int i, const char* n, const char* d) {
+
+    void set(int i, const char* n, const char* d)
+    {
         id = i;
         strcpy(name, n);
         strcpy(dept, d);
     }
-    void display() {
+    void display()
+    {
         printf("학번 : %-15d, 이름 : %-10s, 학과 : %-20s\n", id, name, dept);
     }
 };

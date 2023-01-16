@@ -6,8 +6,11 @@ class LinkedStack {
 public:
     LinkedStack() { top = NULL; }
     ~LinkedStack() { while (!isEmpty()) delete pop(); }
+
     bool isEmpty() { return top == NULL; }
-    void push(Node* p) {
+
+    void push(Node* p)
+    {
         if (isEmpty())
             top = p;
 
@@ -17,14 +20,19 @@ public:
             top = p;
         }
     }
-    Node* pop() {
+    
+    Node* pop()
+    {
         if (isEmpty()) return NULL;
         Node* p = top;
         top = top->getLink();
         return p;
     }
+
     Node* peek() { return top; }
-    void display() {
+
+    void display()
+    {
         printf("[LinkedStack]\n");
         for (Node* p = top; p != NULL; p = p->getLink())
             p->display();
