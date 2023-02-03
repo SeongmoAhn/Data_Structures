@@ -1,6 +1,8 @@
 // Node.h
 #include "Student.h"
-class Node : public Student {
+
+class Node : public Student
+{
     Node* next;
 
 public:
@@ -9,6 +11,5 @@ public:
     ~Node(void) { }
 
     Node* getLink() { return next; }
-
-    void setLink(Node* p) { next = p; }
+    void setLink(Node* p) { next = p;}
 };

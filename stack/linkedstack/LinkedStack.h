@@ -1,14 +1,16 @@
 // LinkedStack.h
 #include "Node.h"
-class LinkedStack {
+
+class LinkedStack
+{
     Node* top;
-    
+
 public:
     LinkedStack() { top = NULL; }
     ~LinkedStack() { while (!isEmpty()) delete pop(); }
 
-    bool isEmpty() { return top == NULL; }
-
+    bool isEmpty() { return (top == NULL); }
+    
     void push(Node* p)
     {
         if (isEmpty())
@@ -20,22 +22,23 @@ public:
             top = p;
         }
     }
-    
+
     Node* pop()
     {
-        if (isEmpty()) return NULL;
+        if (isEmpty())
+            return NULL;
+        
         Node* p = top;
         top = top->getLink();
         return p;
     }
-
     Node* peek() { return top; }
 
     void display()
     {
-        printf("[LinkedStack]\n");
+        printf("LinkedStack\n");
         for (Node* p = top; p != NULL; p = p->getLink())
             p->display();
-        printf("\n");
+        printf("\n");        
     }
 };
