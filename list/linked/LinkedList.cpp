@@ -13,6 +13,7 @@ int main(void)
     list.remove(2);
     list.remove(list.size() - 1);
     list.remove(0);
+    list.display();
     list.replace(1, new Node(90));
     list.display();
     list.clear();

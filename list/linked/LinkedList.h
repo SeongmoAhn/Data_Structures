@@ -4,31 +4,31 @@
 class LinkedList
 {
 private:
-    Node org; // head Node not head pointer
-
+    Node headNode; // head Node not head pointer, headNode의 idx는 -1
+    // 실질적인 시작 Node의 idx는 0번임. 배열과 같음
 public:
-    LinkedList(): org(0) { }
+    LinkedList(): headNode(0) { }
     ~LinkedList() { clear(); }
-    void clear() { while(!isEmpty()) delete remove(0); }
-    Node* getHead() { return org.getLink(); }
-    bool isEmpty() { return getHead() == NULL; }
-    Node* getEntry(int pos)
+    void clear() { while(!isEmpty()) delete remove(0); } // 0번 idx가 NULL일 때까지 Node를 삭제
+    Node* getHead() { return headNode.getLink(); } // 0번 idx의 Node를 반환
+    bool isEmpty() { return getHead() == NULL; } // 0번 idx가 NULL인지 검사
+    Node* getEntry(int idx) // idx의 Node를 반환
     {
-        Node* n = &org;
-        for (int i = -1; i < pos; i++, n = n->getLink())
-            if (n == NULL)
+        Node* cur = &headNode;
+        for (int i = -1; i < idx; i++, cur = cur->getLink())
+            if (cur == NULL)
                 break;
-        return n;
+        return cur;
     }
-    void insert(int pos, Node* n)
+    void insert(int idx, Node* newNode)
     {
-        Node* prev = getEntry(pos - 1);
+        Node* prev = getEntry(idx - 1);
         if (prev != NULL)
-            prev->insertNext(n);
+            prev->insertNext(newNode);
     }
-    Node* remove(int pos)
+    Node* remove(int idx)
     {
-        Node* prev = getEntry(pos - 1);
+        Node* prev = getEntry(idx - 1);
         return prev->removeNext();
     }
     Node* find(int val)
@@ -38,13 +38,13 @@ public:
                 return p;
             return NULL;
     }
-    void replace(int pos, Node* n)
+    void replace(int idx, Node* replaceNode)
     {
-        Node* prev = getEntry(pos - 1);
+        Node* prev = getEntry(idx - 1);
         if (prev != NULL)
         {
             delete prev->removeNext();
-            prev->insertNext(n);
+            prev->insertNext(replaceNode);
         }
     }
     int size()
