@@ -18,6 +18,7 @@ int main(void)
     printf(" 단말의 개수: %d\n", tree.getLeafCount());
     printf(" 트리의 높이: %d\n", tree.getHeight());
 
+    // 수식 트리
     BinaryTree tree2;
     //        +
     //    *       -
@@ -30,7 +31,17 @@ int main(void)
     BinaryNode* n6 = new BinaryNode('-', n4, n5);
     BinaryNode* n7 = new BinaryNode('+', n3, n6);
     tree2.setRoot(n7);
-    printf(" 계산 결과: %d\n", tree2.evaluate());
+    printf("\n 계산 결과: %d\n", tree2.evaluate());
+
+    // 디렉터리 용량 계산
+    BinaryTree tree3;
+    BinaryNode* m4 = new BinaryNode(200, NULL, NULL);
+    BinaryNode* m5 = new BinaryNode(500, NULL, NULL);
+    BinaryNode* m3 = new BinaryNode(100, m4, m5);
+    BinaryNode* m2 = new BinaryNode(50, NULL, NULL);
+    BinaryNode* m1 = new BinaryNode(0, m2, m3);
+    tree3.setRoot(m1);
+    printf("\n 디렉터리 용량 계산 결과: %d KB\n", tree3.calcSize());
 
     return 0;
 }

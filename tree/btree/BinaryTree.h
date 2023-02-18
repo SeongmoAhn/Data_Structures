@@ -127,6 +127,13 @@ public:
             }
             return 0;
         }
-        
+    }
+
+    // 디렉터리 용량 계산 함수
+    int calcSize() { return calcSize(root); }
+    int calcSize(BinaryNode* node)
+    {
+        if (node == NULL) return 0;
+        return node->getData() + calcSize(node->getLeft()) + calcSize(node->getRight());
     }
 };
