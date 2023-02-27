@@ -5,8 +5,8 @@ using namespace std;
 class BinaryTree
 {
 private:
-    BinaryNode* root;
 public:
+    BinaryNode* root;
     BinaryTree(): root(NULL) {}
     void setRoot(BinaryNode* node) { root = node; }
     BinaryNode* getRoot() { return root; }
@@ -55,26 +55,6 @@ public:
             printf(" [%c] ", Node->getData());
         }
     }
-    // void levelorder()
-    // {
-    //     printf("\nlevelorder: ");
-    //     if (!isEmpty())
-    //     {
-    //         CircularQueue q;
-    //         q.enqueue(root);
-    //         while (!q.isEmpty())
-    //         {
-    //             BinaryNode* n = q.dequeue();
-    //             if (n != NULL)
-    //             {
-    //                 printf(" [%c] ", n->getData());
-    //                 q.enqueue(n->getLeft());
-    //                 q.enqueue(n->getRight());
-    //             }
-    //         }
-    //     }
-    //     printf("\n");
-    // }
     void levelorder()
     {
         printf("\nleverorder: ");
@@ -119,44 +99,5 @@ public:
         int hLeft = getHeight(node->getLeft());
         int hRight = getHeight(node->getRight());
         return (hLeft > hRight) ? hLeft + 1 : hRight + 1;
-    }
-
-    // 수식트리 계산 함수
-    int evaluate() { return evaluate(root); }
-    int evaluate(BinaryNode* node)
-    {
-        if (node == NULL) return 0;
-        if (node->isLeaf()) return node->getData();
-        else
-        {
-            int op1 = evaluate(node->getLeft());
-            int op2 = evaluate(node->getRight());
-            switch (node->getData())
-            {
-            case '+':
-                return op1 + op2;
-                break;
-            case '-':
-                return op1 - op2;
-                break;
-            case '*':
-                return op1 * op2;
-                break;
-            case '/':
-                return op1 / op2;
-                break;
-            default:
-                break;
-            }
-            return 0;
-        }
-    }
-
-    // 디렉터리 용량 계산 함수
-    int calcSize() { return calcSize(root); }
-    int calcSize(BinaryNode* node)
-    {
-        if (node == NULL) return 0;
-        return node->getData() + calcSize(node->getLeft()) + calcSize(node->getRight());
     }
 };
